@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Curated by Sayali - Handpicked fashion, beauty, lifestyle products and AI tools for women. Shop intentionally curated pieces that help you become the best version of yourself.">
+    <meta name="keywords" content="Fashion, Beauty, Lifestyle, AI Tools, Women's Fashion, Product Curation, Affiliate Marketing">
+    <title>Curated by Sayali - Fashion, Beauty, Lifestyle & AI Tools</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            background: #F9F5F0;
+            color: #2B2422;
+            line-height: 1.6;
+        }
+        header {
+            background: white;
+            padding: 1.2rem 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 100;
+        }
+        nav {
+            max-width: 1400px; margin: 0 auto; display: flex;
+            justify-content: space-between; align-items: center;
+        }
+        .logo-section { display: flex; align-items: center; gap: 1rem; }
+        .logo-img {
+            width: 50px; height: 50px; border-radius: 50%; object-fit: cover;
+            background: linear-gradient(135deg, #D8A7A7 0%, #C6A15B 100%);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; font-weight: 800; color: white;
+        }
+        .logo { font-size: 1.3rem; font-weight: 700; color: #2B2422; text-decoration: none; letter-spacing: -0.5px; }
+        .tagline { font-size: 0.75rem; color: #D8A7A7; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        nav ul { display: flex; list-style: none; gap: 2.5rem; }
+        nav a { color: #2B2422; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s ease; position: relative; }
+        nav a:hover { color: #D8A7A7; }
+        nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: #D8A7A7; transition: width 0.3s ease; }
+        nav a:hover::after { width: 100%; }
+        .hero {
+            background: linear-gradient(135deg, #F9F5F0 0%, #F5F1EC 100%);
+            padding: 5rem 2rem; text-align: center; min-height: 70vh;
+            display: flex; align-items: center; justify-content: center; flex-direction: column;
+        }
+        .hero-content { max-width: 800px; }
+        .hero h1 { font-size: 3.5rem; line-height: 1.2; color: #2B2422; margin-bottom: 0.5rem; font-weight: 800; letter-spacing: -1px; }
+        .hero-byline { font-size: 1.1rem; color: #D8A7A7; margin-bottom: 1.5rem; font-weight: 600; }
+        .hero-subtitle { font-size: 1.25rem; color: #8F8178; margin-bottom: 2rem; font-weight: 400; line-height: 1.6; }
+        .inspiration-message {
+            background: rgba(216, 167, 167, 0.1); padding: 2rem; border-radius: 12px;
+            border-left: 4px solid #C6A15B; margin: 2rem 0; font-size: 1.3rem;
+            color: #2B2422; font-weight: 600; line-height: 1.8; font-style: italic;
+        }
+        .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+        .btn {
+            padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none;
+            font-weight: 600; transition: all 0.3s ease; border: 2px solid #D8A7A7;
+            cursor: pointer; font-size: 0.95rem; display: inline-block;
+        }
+        .btn-primary { background: #D8A7A7; color: white; }
+        .btn-primary:hover { background: #C6A15B; border-color: #C6A15B; transform: translateY(-2px); }
+        .btn-secondary { background: transparent; color: #D8A7A7; }
+        .btn-secondary:hover { background: #D8A7A7; color: white; }
+        .section { padding: 5rem 2rem; max-width: 1400px; margin: 0 auto; }
+        .section-title { font-size: 2.5rem; color: #2B2422; margin-bottom: 1rem; font-weight: 800; text-align: center; }
+        .section-subtitle { text-align: center; color: #8F8178; margin-bottom: 3rem; font-size: 1.05rem; }
+        .categories-bar { display: flex; gap: 1rem; padding-bottom: 1rem; margin-bottom: 2rem; justify-content: center; flex-wrap: wrap; }
+        .category-tag {
+            padding: 0.6rem 1.5rem; background: white; border: 2px solid #E8D7D0;
+            border-radius: 25px; text-decoration: none; color: #2B2422; font-weight: 500;
+            font-size: 0.9rem; transition: all 0.3s; white-space: nowrap; cursor: pointer;
+        }
+        .category-tag:hover, .category-tag.active { border-color: #D8A7A7; color: #D8A7A7; background: #FBF8F5; }
+        .masonry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .pin-card {
+            background: #FEFCFB; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06); cursor: pointer; transition: all 0.3s ease;
+            display: block; text-decoration: none; color: inherit; position: relative; border: 1px solid #E8D7D0;
+        }
+        .pin-card:hover { box-shadow: 0 8px 24px rgba(216, 167, 167, 0.15); transform: translateY(-4px); border-color: #D8A7A7; }
+        .pin-image {
+            width: 100%; height: 300px; background: linear-gradient(135deg, #F5EBE3 0%, #FCF4EE 100%);
+            display: flex; align-items: center; justify-content: center; font-size: 4rem; overflow: hidden; position: relative;
+        }
+        .pin-image img { width: 100%; height: 100%; object-fit: cover; }
+        .pin-content { padding: 1.2rem; }
+        .pin-category { color: #C6A15B; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.4rem; }
+        .pin-title { font-size: 1.1rem; color: #2B2422; margin-bottom: 0.5rem; font-weight: 600; line-height: 1.4; }
+        .pin-description { color: #8F8178; font-size: 0.9rem; margin-bottom: 0.8rem; line-height: 1.4; }
+        .pin-footer { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+        .pin-price { color: #D8A7A7; font-weight: 700; font-size: 1rem; }
+        .pin-link { background: #F5EBE3; color: #2B2422; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: all 0.3s; }
+        .pin-link:hover { background: #D8A7A7; color: white; }
+        .placeholder { font-size: 0.95rem; color: #8F8178; text-align: center; padding: 1rem; }
+        .ai-section { background: linear-gradient(135deg, #F9F5F0 0%, #F5EBE3 100%); }
+        .ai-tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        .ai-tool-card {
+            background: #FEFCFB; border-radius: 16px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease; border: 2px solid #E8D7D0; position: relative; overflow: hidden;
+        }
+        .ai-tool-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(216, 167, 167, 0.15); border-color: #D8A7A7; }
+        .ai-tool-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, #D8A7A7 0%, #C6A15B 100%); transform: scaleX(0);
+            transform-origin: left; transition: transform 0.3s ease;
+        }
+        .ai-tool-card:hover::before { transform: scaleX(1); }
+        .ai-tool-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .ai-icon { font-size: 2.5rem; display: flex; align-items: center; justify-content: center; }
+        .ai-badge { background: linear-gradient(135deg, #D8A7A7 0%, #C6A15B 100%); color: white; padding: 0.5rem 1rem; border-radius: 25px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .ai-tool-name { font-size: 1.3rem; color: #2B2422; margin-bottom: 0.8rem; font-weight: 700; }
+        .ai-tool-description { color: #666; font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.6; }
+        .ai-features { list-style: none; margin-bottom: 1.5rem; }
+        .ai-features li { color: #555; font-size: 0.9rem; margin-bottom: 0.6rem; display: flex; align-items: center; }
+        .ai-features li:before { content: ''; width: 6px; height: 6px; background: #D8A7A7; border-radius: 50%; margin-right: 0.8rem; flex-shrink: 0; }
+        .ai-tool-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #E8D7D0; }
+        .ai-price { color: #D8A7A7; font-weight: 700; font-size: 0.9rem; }
+        .ai-link { background: #D8A7A7; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: all 0.3s ease; }
+        .ai-link:hover { background: #C6A15B; transform: scale(1.05); }
+        .ai-cta { background: linear-gradient(135deg, #D8A7A7 0%, #C6A15B 100%); color: white; padding: 2rem; border-radius: 12px; text-align: center; font-size: 1.05rem; line-height: 1.6; margin-top: 3rem; }
+        .story-section { background: white; padding: 5rem 2rem; }
+        .story-container { max-width: 900px; margin: 0 auto; }
+        .story-heading { font-size: 2.5rem; color: #2B2422; margin-bottom: 2rem; font-weight: 800; text-align: center; }
+        .story-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+        .story-block { background: linear-gradient(135deg, #F9F5F0 0%, #F5EBE3 100%); padding: 2.5rem; border-radius: 16px; border-left: 4px solid #D8A7A7; }
+        .story-block h3 { font-size: 1.5rem; color: #2B2422; margin-bottom: 1.5rem; font-weight: 700; }
+        .story-block p { color: #2B2422; line-height: 1.8; margin-bottom: 1rem; font-size: 0.95rem; }
+        .story-highlight { color: #D8A7A7; font-weight: 700; font-style: italic; }
+        .core-belief { background: rgba(216, 167, 167, 0.1); border-left: 4px solid #C6A15B; padding: 2rem; border-radius: 8px; margin-top: 2rem; text-align: center; }
+        .core-belief p { color: #2B2422; font-size: 1.1rem; font-weight: 600; line-height: 1.8; }
+        .about-section { background: linear-gradient(135deg, #F9F5F0 0%, #F5EBE3 100%); padding: 5rem 2rem; text-align: center; border-radius: 16px; margin-top: 4rem; }
+        .about-section h2 { font-size: 2rem; color: #2B2422; margin-bottom: 1.5rem; font-weight: 700; }
+        .about-header { display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+        .avatar { width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, #D8A7A7 0%, #C6A15B 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem; box-shadow: 0 4px 15px rgba(216, 167, 167, 0.2); }
+        .about-name { font-size: 1.8rem; color: #2B2422; font-weight: 700; }
+        .about-tagline { color: #D8A7A7; font-size: 1rem; font-weight: 600; }
+        .about-usp { font-size: 1.2rem; color: #2B2422; font-weight: 700; font-style: italic; margin: 1.5rem 0; }
+        .about-text { max-width: 700px; margin: 0 auto 2rem; color: #2B2422; line-height: 1.8; font-size: 1.05rem; }
+        .about-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .stat { text-align: center; }
+        .stat-number { font-size: 2rem; color: #D8A7A7; font-weight: 800; }
+        .stat-label { color: #8F8178; font-size: 0.9rem; margin-top: 0.5rem; }
+        .social-section { text-align: center; padding: 4rem 2rem; background: white; border-radius: 16px; margin-top: 3rem; }
+        .social-title { font-size: 2rem; color: #2B2422; margin-bottom: 1.5rem; font-weight: 700; }
+        .social-description { color: #8F8178; margin-bottom: 2rem; font-size: 1rem; }
+        .social-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .social-btn { padding: 1rem 1.8rem; background: white; border: 2px solid #E8D7D0; border-radius: 50px; text-decoration: none; color: #2B2422; font-weight: 600; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .social-btn:hover { border-color: #D8A7A7; color: #D8A7A7; background: #FBF8F5; transform: translateY(-2px); }
+        .newsletter { background: linear-gradient(135deg, #D8A7A7 0%, #C6A15B 100%); color: white; padding: 4rem 2rem; border-radius: 16px; text-align: center; margin: 4rem 0; }
+        .newsletter h3 { font-size: 1.8rem; margin-bottom: 0.5rem; font-weight: 700; }
+        .newsletter p { margin-bottom: 1.5rem; font-size: 1rem; opacity: 0.9; }
+        .newsletter-form { display: flex; gap: 0.8rem; max-width: 450px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+        .newsletter-form input { flex: 1; min-width: 200px; padding: 0.9rem 1.2rem; border: none; border-radius: 50px; font-size: 0.95rem; }
+        .newsletter-form button { padding: 0.9rem 1.5rem; border: none; border-radius: 50px; background: #2B2422; color: white; font-weight: 600; cursor: pointer; }
+        footer { background: #2B2422; color: white; padding: 3rem 2rem 1.5rem; margin-top: 0; }
+        .footer-inner { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; }
+        footer a { color: #F5EBE3; text-decoration: none; }
+        footer a:hover { color: #D8A7A7; }
+        .footer-bottom { max-width: 1200px; margin: 2rem auto 0; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.15); text-align: center; font-size: .85rem; opacity: .8; }
+        @media (max-width: 800px) {
+            nav { flex-wrap: wrap; gap: 1rem; }
+            nav ul { gap: 1rem; overflow-x: auto; }
+            .hero h1 { font-size: 2.4rem; }
+            .section-title, .story-heading { font-size: 2rem; }
+            .story-content { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo-section">
+            <div class="logo-img">CS</div>
+            <div>
+                <a class="logo" href="#home">Curated by Sayali</a>
+                <div class="tagline">Curated for the woman you're becoming.</div>
+            </div>
+        </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#finds">Curated Finds</a></li>
+            <li><a href="#ai">AI Tools</a></li>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main id="home">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Curated by Sayali</h1>
+            <div class="hero-byline">Beautiful finds. Intentional choices.</div>
+            <p class="hero-subtitle">A thoughtfully curated space for fashion, beauty, lifestyle essentials, and AI tools that help you look good, feel confident, and create a life that feels uniquely yours.</p>
+            <div class="inspiration-message">“Every girl deserves a curated life—one that celebrates her beauty, confidence, and unique style.”</div>
+            <div class="cta-group">
+                <a class="btn btn-primary" href="#finds">Explore Curated Finds</a>
+                <a class="btn btn-secondary" href="#story">Read Our Story</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="finds">
+        <h2 class="section-title">Editor's Picks</h2>
+        <p class="section-subtitle">Thoughtfully selected products. Less searching. Better choices.</p>
+        <div class="categories-bar">
+            <a class="category-tag active" href="#finds">All</a>
+            <a class="category-tag" href="#finds">Fashion</a>
+            <a class="category-tag" href="#finds">Beauty</a>
+            <a class="category-tag" href="#finds">Accessories</a>
+            <a class="category-tag" href="#finds">Lifestyle</a>
+        </div>
+
+        <div class="masonry-grid">
+            <article class="pin-card">
+                <div class="pin-image"><span>Product Image</span></div>
+                <div class="pin-content">
+                    <div class="pin-category">Your Category</div>
+                    <div class="pin-title">Your Product Name</div>
+                    <p class="pin-description">Add your product description here when you have an affiliate product.</p>
+                    <div class="pin-footer">
+                        <span class="pin-price">₹—</span>
+                        <a class="pin-link" href="#" aria-label="Shop product">Shop Now</a>
+                    </div>
+                </div>
+            </article>
+            <article class="pin-card">
+                <div class="pin-image"><span>Product Image</span></div>
+                <div class="pin-content">
+                    <div class="pin-category">Your Category</div>
+                    <div class="pin-title">Your Product Name</div>
+                    <p class="pin-description">Add your product description here when you have an affiliate product.</p>
+                    <div class="pin-footer">
+                        <span class="pin-price">₹—</span>
+                        <a class="pin-link" href="#" aria-label="Shop product">Shop Now</a>
+                    </div>
+                </div>
+            </article>
+            <article class="pin-card">
+                <div class="pin-image"><span>Product Image</span></div>
+                <div class="pin-content">
+                    <div class="pin-category">Your Category</div>
+                    <div class="pin-title">Your Product Name</div>
+                    <p class="pin-description">Add your product description here when you have an affiliate product.</p>
+                    <div class="pin-footer">
+                        <span class="pin-price">₹—</span>
+                        <a class="pin-link" href="#" aria-label="Shop product">Shop Now</a>
+                    </div>
+                </div>
+            </article>
+            <article class="pin-card">
+                <div class="pin-image"><span>Product Image</span></div>
+                <div class="pin-content">
+                    <div class="pin-category">Your Category</div>
+                    <div class="pin-title">Your Product Name</div>
+                    <p class="pin-description">Add your product description here when you have an affiliate product.</p>
+                    <div class="pin-footer">
+                        <span class="pin-price">₹—</span>
+                        <a class="pin-link" href="#" aria-label="Shop product">Shop Now</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="section ai-section" id="ai">
+        <h2 class="section-title">AI Tools Worth Knowing</h2>
+        <p class="section-subtitle">Practical AI tools curated to help you work smarter, create faster, and build more.</p>
+        <div class="ai-tools-grid">
+            <article class="ai-tool-card">
+                <div class="ai-tool-header"><div class="ai-icon">✦</div><span class="ai-badge">Coming Soon</span></div>
+                <h3 class="ai-tool-name">AI Tool Spotlight</h3>
+                <p class="ai-tool-description">Add your recommended AI tool here once you have your affiliate link.</p>
+                <ul class="ai-features"><li>Feature one</li><li>Feature two</li><li>Feature three</li></ul>
+                <div class="ai-tool-footer"><span class="ai-price">Add pricing</span><a class="ai-link" href="#">Explore</a></div>
+            </article>
+            <article class="ai-tool-card">
+                <div class="ai-tool-header"><div class="ai-icon">✧</div><span class="ai-badge">Coming Soon</span></div>
+                <h3 class="ai-tool-name">AI Tool Spotlight</h3>
+                <p class="ai-tool-description">Your next AI recommendation can be added here later.</p>
+                <ul class="ai-features"><li>Feature one</li><li>Feature two</li><li>Feature three</li></ul>
+                <div class="ai-tool-footer"><span class="ai-price">Add pricing</span><a class="ai-link" href="#">Explore</a></div>
+            </article>
+        </div>
+        <div class="ai-cta">Curated tools, not endless lists. Only recommendations that deserve your attention.</div>
+    </section>
+
+    <section class="story-section" id="story">
+        <div class="story-container">
+            <h2 class="story-heading">Our Story</h2>
+            <div class="story-content">
+                <div class="story-block">
+                    <h3>Why I Started This</h3>
+                    <p>I started this because I believe becoming the best version of yourself shouldn't mean becoming someone else.</p>
+                    <p>There are so many products, trends, and ideas everywhere—and it can be overwhelming to know what is actually worth your time, money, and attention.</p>
+                    <p>I wanted to create a space where women could discover beautiful, useful, and thoughtfully chosen things that inspire them to feel more confident, independent, and comfortable in their own style.</p>
+                    <p><span class="story-highlight">This isn't just about shopping. It's about building a life you genuinely love—one choice at a time.</span></p>
+                </div>
+                <div class="story-block">
+                    <h3>Our Brand Story</h3>
+                    <p>We believe every woman deserves a life that feels beautifully, authentically hers.</p>
+                    <p>Our brand was created for women who value more than simply following trends. We curate thoughtfully chosen pieces, ideas, and inspiration that help you express your unique style, elevate your everyday life, and feel confident in who you are becoming.</p>
+                    <p>From beauty and fashion to lifestyle and self-growth, every recommendation is selected with one simple belief in mind: <span class="story-highlight">you deserve to choose a life that feels like you.</span></p>
+                    <p>Because luxury isn't always about having more. Sometimes, it's about choosing better.</p>
+                </div>
+            </div>
+            <div class="core-belief"><p>Curated with intention. Inspired by you.</p></div>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <div class="about-section">
+            <h2>Meet the Curator</h2>
+            <div class="about-header">
+                <div class="avatar">S</div>
+                <div class="about-name">Sayali</div>
+                <div class="about-tagline">Founder & Curator</div>
+            </div>
+            <div class="about-usp">“Curated finds for the woman you're becoming.”</div>
+            <p class="about-text">I created this space to make discovering beautiful, useful, and inspiring things feel simpler. Every recommendation is meant to help you make more intentional choices—whether you're refining your style, exploring beauty and lifestyle essentials, or discovering tools that help you build more.</p>
+            <div class="about-stats">
+                <div class="stat"><div class="stat-number">01</div><div class="stat-label">Curated with intention</div></div>
+                <div class="stat"><div class="stat-number">02</div><div class="stat-label">Less searching</div></div>
+                <div class="stat"><div class="stat-number">03</div><div class="stat-label">Better choices</div></div>
+            </div>
+        </div>
+
+        <div class="social-section">
+            <h2 class="social-title">Let's Connect</h2>
+            <p class="social-description">Follow along for curated finds, inspiration, AI discoveries, and more.</p>
+            <div class="social-buttons">
+                <a class="social-btn" href="#" target="_blank" rel="noopener">Instagram</a>
+                <a class="social-btn" href="#" target="_blank" rel="noopener">Pinterest</a>
+                <a class="social-btn" href="#" target="_blank" rel="noopener">Email</a>
+            </div>
+        </div>
+
+        <div class="newsletter">
+            <h3>Get the Curated Edit</h3>
+            <p>Occasional recommendations, inspiration, and useful discoveries—straight to your inbox.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Newsletter signup will be connected when you add your email service.');">
+                <input type="email" placeholder="Your email address" required aria-label="Email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div>
+            <h3>Curated by Sayali</h3>
+            <p style="margin-top:.6rem; opacity:.8;">Beautiful finds. Intentional choices.</p>
+        </div>
+        <div>
+            <h4>Explore</h4>
+            <p><a href="#finds">Curated Finds</a></p>
+            <p><a href="#ai">AI Tools</a></p>
+            <p><a href="#story">Our Story</a></p>
+            <p><a href="#about">About</a></p>
+        </div>
+        <div>
+            <h4>Information</h4>
+            <p><a href="#">Privacy Policy</a></p>
+            <p><a href="#">Terms & Conditions</a></p>
+            <p><a href="#">Affiliate Disclosure</a></p>
+            <p><a href="mailto:hello@example.com">Contact</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">© 2026 Curated by Sayali. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
